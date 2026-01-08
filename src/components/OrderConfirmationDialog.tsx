@@ -132,7 +132,7 @@ const OrderConfirmationDialog = ({ open, onClose, order, onBackToMenu }: OrderCo
         <div class="divider"></div>
         
         <div class="qr-section">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(window.location.origin + '/track/' + order.id)}" alt="QR Code" />
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent('https://ahmadisaam40-hue.github.io/WESTREN-BITE/#/track/' + order.id)}" alt="QR Code" />
           <p>${language === 'ar' ? 'امسح الكود لتتبع طلبك' : 'Scan to track your order'}</p>
         </div>
         
@@ -191,7 +191,7 @@ const OrderConfirmationDialog = ({ open, onClose, order, onBackToMenu }: OrderCo
           <div className="flex flex-col items-center justify-center mb-6">
             <div className="bg-white p-4 rounded-xl border-2 border-primary shadow-[0_0_20px_rgba(249,115,22,0.3)]">
               <QRCodeSVG
-                value={`${window.location.origin}/track/${order.id}`}
+                value={`https://ahmadisaam40-hue.github.io/WESTREN-BITE/#/track/${order.id}`}
                 size={140}
                 fgColor="#F67E18"
                 bgColor="#ffffff"
