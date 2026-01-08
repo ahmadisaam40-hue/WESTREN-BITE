@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Western Bite Color Palette */
+    --background: 30 20% 6%;
+    --foreground: 40 30% 92%;
+
+    --card: 30 25% 10%;
+    --card-foreground: 40 30% 92%;
+
+    --popover: 30 25% 8%;
+    --popover-foreground: 40 30% 92%;
+
+    --primary: 25 95% 53%;
+    --primary-foreground: 30 20% 6%;
+
+    --secondary: 30 50% 20%;
+    --secondary-foreground: 40 30% 92%;
+
+    --muted: 30 20% 15%;
+    --muted-foreground: 30 15% 55%;
+
+    --accent: 15 80% 50%;
+    --accent-foreground: 40 30% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 30% 18%;
+    --input: 30 30% 15%;
+    --ring: 25 95% 53%;
+
+    --radius: 0.75rem;
+
+    /* Custom Western Colors */
+    --sunset-orange: 25 95% 53%;
+    --fire-red: 15 80% 50%;
+    --saddle-brown: 25 60% 25%;
+    --desert-sand: 35 40% 75%;
+    --cream: 40 30% 92%;
+    --charcoal: 30 20% 6%;
+    --wood-dark: 25 50% 12%;
+    --wood-light: 30 40% 22%;
+
+    /* Gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(15 80% 50%) 50%, hsl(0 70% 45%) 100%);
+    --gradient-wood: linear-gradient(180deg, hsl(30 40% 22%) 0%, hsl(25 50% 12%) 100%);
+    --gradient-hero: linear-gradient(180deg, transparent 0%, hsl(30 20% 6% / 0.8) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(25 95% 53% / 0.3);
+    --shadow-fire: 0 0 40px hsl(15 80% 50% / 0.4);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 30 25% 10%;
+    --sidebar-foreground: 40 30% 92%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 30 20% 6%;
+    --sidebar-accent: 30 50% 20%;
+    --sidebar-accent-foreground: 40 30% 92%;
+    --sidebar-border: 30 30% 18%;
+    --sidebar-ring: 25 95% 53%;
+  }
+
+  .dark {
+    --background: 30 20% 6%;
+    --foreground: 40 30% 92%;
+    --card: 30 25% 10%;
+    --card-foreground: 40 30% 92%;
+    --popover: 30 25% 8%;
+    --popover-foreground: 40 30% 92%;
+    --primary: 25 95% 53%;
+    --primary-foreground: 30 20% 6%;
+    --secondary: 30 50% 20%;
+    --secondary-foreground: 40 30% 92%;
+    --muted: 30 20% 15%;
+    --muted-foreground: 30 15% 55%;
+    --accent: 15 80% 50%;
+    --accent-foreground: 40 30% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 30 30% 18%;
+    --input: 30 30% 15%;
+    --ring: 25 95% 53%;
+    --sidebar-background: 30 25% 10%;
+    --sidebar-foreground: 40 30% 92%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 30 20% 6%;
+    --sidebar-accent: 30 50% 20%;
+    --sidebar-accent-foreground: 40 30% 92%;
+    --sidebar-border: 30 30% 18%;
+    --sidebar-ring: 25 95% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-western {
+    @apply relative overflow-hidden bg-gradient-to-r from-primary via-accent to-primary 
+           text-primary-foreground font-display text-lg px-8 py-4 rounded-lg
+           transition-all duration-300 hover:shadow-[var(--shadow-fire)]
+           hover:scale-105 active:scale-95;
+  }
+
+  .btn-western::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
+           -translate-x-full transition-transform duration-500;
+  }
+
+  .btn-western:hover::before {
+    @apply translate-x-full;
+  }
+
+  .card-western {
+    @apply relative bg-card rounded-xl overflow-hidden
+           border border-border/50 shadow-[var(--shadow-card)]
+           transition-all duration-300 hover:border-primary/50 hover:shadow-[var(--shadow-glow)];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl lg:text-6xl text-gradient;
+  }
+
+  .wood-texture {
+    background-image: var(--gradient-wood);
+    @apply relative;
+  }
+
+  .wood-texture::before {
+    content: '';
+    @apply absolute inset-0 opacity-10;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .fire-glow {
+    @apply relative;
+  }
+
+  .fire-glow::after {
+    content: '';
+    @apply absolute -inset-1 bg-gradient-to-t from-accent/20 via-primary/10 to-transparent 
+           blur-xl -z-10 opacity-0 transition-opacity duration-300;
+  }
+
+  .fire-glow:hover::after {
+    @apply opacity-100;
+  }
+
+  .menu-category-btn {
+    @apply px-6 py-3 rounded-full font-display text-sm uppercase tracking-wider
+           border-2 border-border bg-transparent text-foreground
+           transition-all duration-300 hover:border-primary hover:text-primary
+           data-[active=true]:bg-primary data-[active=true]:text-primary-foreground
+           data-[active=true]:border-primary;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-flame {
+    animation: flame 1.5s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes flame {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(1.1) translateY(-5px); opacity: 0.8; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px hsl(25 95% 53% / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(25 95% 53% / 0.6); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
